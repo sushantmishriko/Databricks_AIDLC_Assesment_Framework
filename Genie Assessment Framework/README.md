@@ -22,10 +22,37 @@ The framework automatically generates:
 * ✅ **Questions rephrased** to assess CURRENT Genie Code usage (not theoretical capabilities)
 * ✅ **Insurance domain focus** - All example prompts use claims, policies, fraud detection scenarios
 * ✅ **Single CSV template** - Simplified to one master template file
+* ✅ **AI Tool Comparison Framework** - Compare Genie Code with GitHub Copilot, ChatGPT, etc. to identify capability gaps
 
 ---
 
 ## 📁 Framework Components
+
+### 🆚 **AI Tool Comparison**
+
+This framework now includes a comprehensive comparison capability to evaluate Genie Code against other AI coding tools:
+
+**Supported Comparisons:**
+* GitHub Copilot vs Genie Code
+* ChatGPT/Claude vs Genie Code
+* AWS CodeWhisperer vs Genie Code
+* Mixed tool usage scenarios
+
+**Key Features:**
+* **"Other_AI_Tools_Used" column** - Document current AI tools (Copilot, ChatGPT, etc.)
+* **"Gap_Description" column** - Identify specific Databricks capabilities you're missing
+* **Maturity Level 1 & 2** - Explicitly reference generic AI tools to show gaps
+* **Gap Analysis Categories** - Unity Catalog, Delta Lake, DLT, Performance, MCP
+* **ROI Calculations** - Quantify time savings from migrating to Genie Code (10-20 hrs/week typical)
+
+**Typical Gaps Identified:**
+* ❌ GitHub Copilot: No Unity Catalog awareness, generic Delta Lake patterns, no DLT context
+* ❌ ChatGPT: Zero schema access, copy-paste workflow, no Databricks integration
+* ❌ Mixed Tools: Fragmented experience, inconsistent patterns, missing MCP customization
+
+**See Also:** `AI_Tools_Comparison_Guide.md` for detailed comparison scenarios and migration strategies
+
+---
 
 ### 1. **SDLC_Assessment_Template.csv** ✅
 **Purpose:** Single master assessment template (CSV format)
