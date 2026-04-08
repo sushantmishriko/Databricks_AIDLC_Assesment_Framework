@@ -1,0 +1,11 @@
+Step,Action,Description,Time_Estimate
+1,Open SDLC_Assessment_Template_CLEAR.csv in Excel/Google Sheets,Use spreadsheet software for easy editing,1 minute
+2,"Read each Question (column D) - Focus on ""How is your team CURRENTLY using...""","Questions assess CURRENT usage, not potential capabilities",1-2 hours
+3,Review Level_1_Criteria through Level_5_Criteria columns (P-T),Detailed descriptions of what each maturity level (1-5) means,30 min
+4,Test the Example_Prompt (column O) in Genie Code with your data,Hands-on testing helps calibrate your scoring,1-2 hours
+5,"Fill Column K: ""⚠️ YOU_FILL: Current_Score (1-5)"" - Rate current usage","Be honest - score based on production usage, not experiments",1 hour
+6,"Fill Column L: ""⚠️ YOU_FILL: Evidence"" - Provide specific proof","Example: ""Notebook ID 12345 - claims profiling with Genie""",1 hour
+7,"Fill Column M: ""⚠️ YOU_FILL: Notes"" - Add context/observations","Example: ""Works well for simple queries, needs help with complex joins""",30 min
+8,"Fill Column N: ""⚠️ YOU_FILL: Priority"" - Set Critical/High/Medium/Low for gaps","For scores ≤3 only. Critical = business-impacting, High = productivity",15 min
+9,Save as SDLC_Assessment_Template_COMPLETED.csv,Keep original filename for framework to process,1 min
+10,Upload to Databricks and run Assessment_Config_Reader.ipynb,"Framework generates maturity scores, gaps, roadmap, visualizations",5 min (automated)
