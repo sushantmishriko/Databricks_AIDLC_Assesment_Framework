@@ -1,0 +1,961 @@
+{
+  "version": "1.0.0",
+  "description": "Comprehensive Data Engineering Feature Catalog for Genie Code Skill File Generation",
+  "features": {
+    "pipeline_sdp": {
+      "name": "Lakeflow Spark Declarative Pipeline",
+      "category": "Pipeline Creation",
+      "description": "Create Spark Declarative Pipelines (formerly DLT) for building reliable data pipelines",
+      "use_cases": [
+        "ETL/ELT workflows",
+        "Streaming data processing",
+        "Batch data transformation",
+        "Multi-hop architecture (Bronze/Silver/Gold)"
+      ],
+      "parameters": {
+        "pipeline_mode": [
+          "triggered",
+          "continuous"
+        ],
+        "table_type": [
+          "streaming_table",
+          "materialized_view",
+          "view"
+        ],
+        "cluster_mode": [
+          "legacy",
+          "enhanced",
+          "serverless"
+        ],
+        "edition": [
+          "core",
+          "pro",
+          "advanced"
+        ]
+      },
+      "key_features": [
+        "Declarative SQL/Python syntax",
+        "Automatic schema evolution",
+        "Data quality expectations",
+        "Built-in monitoring",
+        "Unity Catalog integration"
+      ],
+      "related_features": [
+        "data_quality",
+        "streaming_processing",
+        "medallion_architecture"
+      ]
+    },
+    "auto_loader": {
+      "name": "Auto Loader (Incremental Ingestion)",
+      "category": "Data Ingestion",
+      "description": "Incrementally and efficiently load data from cloud storage",
+      "use_cases": [
+        "Ingest data from S3/ADLS/GCS",
+        "Handle schema evolution",
+        "Process millions of files efficiently",
+        "Rescue malformed data"
+      ],
+      "parameters": {
+        "format": [
+          "json",
+          "csv",
+          "parquet",
+          "avro",
+          "orc",
+          "text",
+          "binaryFile"
+        ],
+        "cloud_provider": [
+          "aws",
+          "azure",
+          "gcp"
+        ],
+        "schema_evolution": [
+          "addNewColumns",
+          "rescue",
+          "failOnNewColumns"
+        ],
+        "trigger": [
+          "availableNow",
+          "processingTime",
+          "once"
+        ]
+      },
+      "key_features": [
+        "Automatic file discovery",
+        "Schema inference and evolution",
+        "Exactly-once processing",
+        "Scalable to millions of files",
+        "Cloud notifications (SQS/Event Grid)"
+      ],
+      "related_features": [
+        "streaming_processing",
+        "schema_evolution",
+        "error_handling"
+      ]
+    },
+    "change_data_capture": {
+      "name": "Change Data Capture (CDC)",
+      "category": "Data Integration",
+      "description": "Process CDC streams and apply changes to Delta tables",
+      "use_cases": [
+        "Replicate database changes",
+        "Apply MERGE operations",
+        "Track data history",
+        "Sync operational databases"
+      ],
+      "parameters": {
+        "cdc_type": [
+          "APPLY_CHANGES",
+          "APPLY_CHANGES_FROM_SNAPSHOT",
+          "custom_merge"
+        ],
+        "source_format": [
+          "debezium",
+          "custom",
+          "database_log"
+        ],
+        "scd_type": [
+          "type1",
+          "type2"
+        ],
+        "sequence_by": "timestamp or sequence column"
+      },
+      "key_features": [
+        "Built-in APPLY CHANGES in SDP",
+        "SCD Type 1 and Type 2 support",
+        "Automatic deduplication",
+        "History tracking",
+        "Efficient MERGE operations"
+      ],
+      "related_features": [
+        "pipeline_sdp",
+        "delta_optimization",
+        "streaming_processing"
+      ]
+    },
+    "delta_optimization": {
+      "name": "Delta Lake Optimization",
+      "category": "Performance",
+      "description": "Optimize Delta tables for query performance and storage efficiency",
+      "use_cases": [
+        "Compact small files",
+        "Z-order clustering",
+        "Vacuum old files",
+        "Optimize table layout",
+        "Liquid clustering"
+      ],
+      "parameters": {
+        "optimization_type": [
+          "OPTIMIZE",
+          "VACUUM",
+          "Z-ORDER",
+          "LIQUID_CLUSTERING"
+        ],
+        "retention_hours": 168,
+        "cluster_columns": "list of columns",
+        "auto_optimize": [
+          "auto_optimize",
+          "optimized_writes"
+        ]
+      },
+      "key_features": [
+        "OPTIMIZE with bin-packing",
+        "Z-ORDER for multi-dimensional clustering",
+        "Liquid clustering (auto-clustering)",
+        "VACUUM for space reclamation",
+        "Predictive I/O",
+        "Delta cache optimization"
+      ],
+      "related_features": [
+        "performance_tuning",
+        "storage_management"
+      ]
+    },
+    "data_quality": {
+      "name": "Data Quality & Expectations",
+      "category": "Data Quality",
+      "description": "Implement data quality checks and expectations",
+      "use_cases": [
+        "Validate data quality",
+        "Define business rules",
+        "Monitor data integrity",
+        "Alert on quality issues"
+      ],
+      "parameters": {
+        "expectation_action": [
+          "allow",
+          "drop",
+          "fail",
+          "quarantine"
+        ],
+        "validation_level": [
+          "row",
+          "aggregate",
+          "schema"
+        ],
+        "monitoring": [
+          "real_time",
+          "batch"
+        ]
+      },
+      "key_features": [
+        "Built-in expectations in SDP",
+        "Custom validation logic",
+        "Quality metrics tracking",
+        "Failed records handling",
+        "Integration with monitoring"
+      ],
+      "related_features": [
+        "pipeline_sdp",
+        "monitoring_observability"
+      ]
+    },
+    "monitoring_observability": {
+      "name": "Monitoring & Observability",
+      "category": "Operations",
+      "description": "Monitor pipeline health, performance, and data quality",
+      "use_cases": [
+        "Track pipeline runs",
+        "Monitor data quality metrics",
+        "Alert on failures",
+        "Performance analysis",
+        "Lineage tracking"
+      ],
+      "parameters": {
+        "metrics_type": [
+          "pipeline_events",
+          "data_quality",
+          "performance",
+          "lineage"
+        ],
+        "alert_channels": [
+          "email",
+          "webhook",
+          "pagerduty"
+        ],
+        "retention_days": 30
+      },
+      "key_features": [
+        "Event log analysis",
+        "Data quality metrics",
+        "Pipeline lineage",
+        "Performance dashboards",
+        "Alerting integration",
+        "System tables (workflows, pipelines, quality)"
+      ],
+      "related_features": [
+        "data_quality",
+        "pipeline_sdp",
+        "testing_framework"
+      ]
+    },
+    "testing_framework": {
+      "name": "Testing Framework (Unit & Integration)",
+      "category": "SDLC",
+      "description": "Test data pipelines and transformations",
+      "use_cases": [
+        "Unit test transformations",
+        "Integration testing",
+        "Regression testing",
+        "Data validation testing"
+      ],
+      "parameters": {
+        "test_type": [
+          "unit",
+          "integration",
+          "e2e"
+        ],
+        "framework": [
+          "pytest",
+          "unittest",
+          "databricks_test_utils"
+        ],
+        "environment": [
+          "dev",
+          "test",
+          "staging"
+        ]
+      },
+      "key_features": [
+        "Mock data generation",
+        "Fixture management",
+        "Assertion helpers",
+        "Test isolation",
+        "CI/CD integration"
+      ],
+      "related_features": [
+        "cicd_deployment",
+        "dev_test_prod_workflow"
+      ]
+    },
+    "cicd_deployment": {
+      "name": "CI/CD Deployment",
+      "category": "SDLC",
+      "description": "Automate deployment of data pipelines across environments",
+      "use_cases": [
+        "Automated deployments",
+        "Environment promotion",
+        "Configuration management",
+        "Rollback strategies"
+      ],
+      "parameters": {
+        "ci_tool": [
+          "github_actions",
+          "azure_devops",
+          "jenkins",
+          "gitlab_ci"
+        ],
+        "deployment_strategy": [
+          "blue_green",
+          "canary",
+          "rolling"
+        ],
+        "environment_sequence": [
+          "dev",
+          "test",
+          "staging",
+          "prod"
+        ]
+      },
+      "key_features": [
+        "Infrastructure as Code",
+        "Automated testing",
+        "Asset bundles",
+        "Environment-specific configs",
+        "Approval workflows"
+      ],
+      "related_features": [
+        "testing_framework",
+        "dev_test_prod_workflow"
+      ]
+    },
+    "streaming_processing": {
+      "name": "Streaming Data Processing",
+      "category": "Processing Patterns",
+      "description": "Build real-time streaming data pipelines",
+      "use_cases": [
+        "Real-time analytics",
+        "Event processing",
+        "Continuous aggregations",
+        "Stream-to-stream joins"
+      ],
+      "parameters": {
+        "trigger_type": [
+          "continuous",
+          "processingTime",
+          "availableNow"
+        ],
+        "checkpoint_location": "cloud path",
+        "watermark": "time column and threshold",
+        "output_mode": [
+          "append",
+          "update",
+          "complete"
+        ]
+      },
+      "key_features": [
+        "Structured Streaming",
+        "Stateful processing",
+        "Watermarking",
+        "Stream deduplication",
+        "Exactly-once semantics"
+      ],
+      "related_features": [
+        "auto_loader",
+        "pipeline_sdp",
+        "performance_tuning"
+      ]
+    },
+    "batch_processing": {
+      "name": "Batch Data Processing",
+      "category": "Processing Patterns",
+      "description": "Build efficient batch data pipelines",
+      "use_cases": [
+        "Daily/hourly batch jobs",
+        "Historical data processing",
+        "Large-scale transformations",
+        "Data backfill"
+      ],
+      "parameters": {
+        "schedule": "cron expression",
+        "partition_strategy": [
+          "date",
+          "hour",
+          "custom"
+        ],
+        "read_mode": [
+          "full",
+          "incremental",
+          "partition_based"
+        ],
+        "parallelism": "number of tasks"
+      },
+      "key_features": [
+        "Incremental processing",
+        "Partition pruning",
+        "Broadcast joins",
+        "Adaptive query execution",
+        "Job orchestration"
+      ],
+      "related_features": [
+        "delta_optimization",
+        "performance_tuning"
+      ]
+    },
+    "medallion_architecture": {
+      "name": "Medallion Architecture (Bronze/Silver/Gold)",
+      "category": "Architecture Pattern",
+      "description": "Implement multi-hop data architecture",
+      "use_cases": [
+        "Data lakehouse layering",
+        "Progressive data refinement",
+        "Raw to curated pipeline",
+        "Multi-team data access"
+      ],
+      "parameters": {
+        "layers": [
+          "bronze",
+          "silver",
+          "gold"
+        ],
+        "bronze_strategy": [
+          "raw_files",
+          "streaming_ingest"
+        ],
+        "silver_strategy": [
+          "cleaned",
+          "conformed",
+          "deduplicated"
+        ],
+        "gold_strategy": [
+          "aggregated",
+          "business_metrics",
+          "reporting"
+        ]
+      },
+      "key_features": [
+        "Bronze: Raw data ingestion",
+        "Silver: Cleaned and conformed",
+        "Gold: Business-level aggregates",
+        "Clear data lineage",
+        "Separation of concerns"
+      ],
+      "related_features": [
+        "pipeline_sdp",
+        "auto_loader",
+        "data_quality"
+      ]
+    },
+    "unity_catalog_governance": {
+      "name": "Unity Catalog Governance",
+      "category": "Governance",
+      "description": "Implement data governance with Unity Catalog",
+      "use_cases": [
+        "Fine-grained access control",
+        "Data lineage tracking",
+        "PII protection",
+        "Audit logging",
+        "Tag-based policies"
+      ],
+      "parameters": {
+        "governance_type": [
+          "GRANTS",
+          "ROW_FILTERS",
+          "COLUMN_MASKS",
+          "TAGS"
+        ],
+        "catalog_structure": "catalog.schema.table",
+        "permission_level": [
+          "SELECT",
+          "MODIFY",
+          "ALL_PRIVILEGES"
+        ],
+        "tag_types": [
+          "PII",
+          "GDPR",
+          "SENSITIVE",
+          "PUBLIC"
+        ]
+      },
+      "key_features": [
+        "Centralized governance",
+        "Dynamic views",
+        "Column-level security",
+        "Row-level filtering",
+        "Attribute-based access control (ABAC)",
+        "Data classification tags"
+      ],
+      "related_features": [
+        "monitoring_observability",
+        "compliance"
+      ]
+    },
+    "performance_tuning": {
+      "name": "Performance Tuning",
+      "category": "Performance",
+      "description": "Optimize pipeline and query performance",
+      "use_cases": [
+        "Slow query optimization",
+        "Resource utilization",
+        "Cost optimization",
+        "Throughput improvement"
+      ],
+      "parameters": {
+        "tuning_area": [
+          "query",
+          "cluster",
+          "storage",
+          "shuffle"
+        ],
+        "optimization_goal": [
+          "latency",
+          "throughput",
+          "cost"
+        ],
+        "monitoring_metrics": [
+          "execution_time",
+          "data_size",
+          "compute_cost"
+        ]
+      },
+      "key_features": [
+        "Photon acceleration",
+        "Adaptive query execution",
+        "Dynamic partition pruning",
+        "Caching strategies",
+        "Cluster right-sizing",
+        "Serverless compute"
+      ],
+      "related_features": [
+        "delta_optimization",
+        "streaming_processing",
+        "batch_processing"
+      ]
+    },
+    "error_handling_recovery": {
+      "name": "Error Handling & Recovery",
+      "category": "Reliability",
+      "description": "Implement robust error handling and recovery patterns",
+      "use_cases": [
+        "Handle bad records",
+        "Retry failed operations",
+        "Dead letter queues",
+        "Graceful degradation"
+      ],
+      "parameters": {
+        "error_strategy": [
+          "retry",
+          "skip",
+          "quarantine",
+          "fail"
+        ],
+        "retry_policy": "max_attempts and backoff",
+        "bad_records_path": "quarantine location",
+        "alerting": "notification channels"
+      },
+      "key_features": [
+        "Rescue columns for malformed data",
+        "Automatic retries",
+        "Error tracking",
+        "Recovery procedures",
+        "Alert integration"
+      ],
+      "related_features": [
+        "monitoring_observability",
+        "data_quality"
+      ]
+    },
+    "incremental_processing": {
+      "name": "Incremental Processing Patterns",
+      "category": "Processing Patterns",
+      "description": "Efficiently process only new or changed data",
+      "use_cases": [
+        "Time-based incremental loads",
+        "Watermark-based processing",
+        "Change tracking",
+        "Cost-efficient updates"
+      ],
+      "parameters": {
+        "incremental_strategy": [
+          "timestamp",
+          "watermark",
+          "cdc",
+          "partition"
+        ],
+        "checkpoint_location": "persistence path",
+        "lookback_window": "time duration",
+        "idempotency": "deduplication strategy"
+      },
+      "key_features": [
+        "Watermark management",
+        "State management",
+        "Idempotent processing",
+        "Late data handling",
+        "Cost optimization"
+      ],
+      "related_features": [
+        "streaming_processing",
+        "auto_loader",
+        "change_data_capture"
+      ]
+    },
+    "dev_test_prod_workflow": {
+      "name": "Dev/Test/Prod Workflow",
+      "category": "SDLC",
+      "description": "Multi-environment development lifecycle",
+      "use_cases": [
+        "Separate dev/test/prod environments",
+        "Configuration management",
+        "Environment promotion",
+        "Testing strategies"
+      ],
+      "parameters": {
+        "environments": [
+          "dev",
+          "test",
+          "staging",
+          "prod"
+        ],
+        "config_management": [
+          "asset_bundles",
+          "environment_vars",
+          "separate_catalogs"
+        ],
+        "promotion_strategy": [
+          "automated",
+          "manual_approval",
+          "canary"
+        ]
+      },
+      "key_features": [
+        "Environment isolation",
+        "Parameterized configs",
+        "Asset bundles",
+        "Automated promotion",
+        "Rollback capabilities"
+      ],
+      "related_features": [
+        "cicd_deployment",
+        "testing_framework"
+      ]
+    },
+    "requirements-discovery": {
+      "name": "Requirements & Discovery",
+      "category": "Project Planning",
+      "description": "Analyze requirements, discover existing tables/schemas, and plan data engineering solutions",
+      "use_cases": [
+        "Understanding business requirements and translating to technical specs",
+        "Discovering existing data sources and schemas",
+        "Analyzing table structures and relationships",
+        "Creating data flow diagrams and architecture plans",
+        "Identifying data quality issues early"
+      ],
+      "parameters": {
+        "discovery_scope": [
+          "catalog",
+          "schema",
+          "table",
+          "all"
+        ],
+        "analysis_type": [
+          "schema",
+          "lineage",
+          "quality",
+          "usage"
+        ],
+        "output_format": [
+          "documentation",
+          "diagram",
+          "specification"
+        ]
+      },
+      "key_features": [
+        "Automated schema discovery",
+        "Data profiling and statistics",
+        "Table relationship mapping",
+        "Data quality assessment",
+        "Requirements documentation templates"
+      ],
+      "related_features": [
+        "unity-catalog-governance",
+        "monitoring-observability",
+        "medallion-architecture"
+      ]
+    },
+    "databricks-asset-bundles": {
+      "name": "Databricks Asset Bundles (DABs)",
+      "category": "Deployment & IaC",
+      "description": "Create and manage Databricks Asset Bundles for infrastructure-as-code deployment",
+      "use_cases": [
+        "Deploy pipelines across environments with IaC",
+        "Version control infrastructure configurations",
+        "Manage multi-environment deployments (dev/test/prod)",
+        "Standardize project structure and deployment",
+        "Automate resource provisioning"
+      ],
+      "parameters": {
+        "bundle_components": [
+          "pipelines",
+          "jobs",
+          "notebooks",
+          "dashboards",
+          "clusters"
+        ],
+        "target_environments": [
+          "dev",
+          "test",
+          "staging",
+          "prod"
+        ],
+        "deployment_mode": [
+          "development",
+          "production"
+        ],
+        "variable_management": [
+          "files",
+          "environment",
+          "secrets"
+        ]
+      },
+      "key_features": [
+        "databricks.yml configuration",
+        "Environment-specific variables",
+        "Resource templating",
+        "Deployment validation",
+        "Git integration",
+        "CI/CD pipeline integration"
+      ],
+      "related_features": [
+        "cicd-deployment",
+        "dev-test-prod-workflow",
+        "testing-framework"
+      ]
+    },
+    "lakehouse-apps": {
+      "name": "Lakehouse Apps & Common Notebooks",
+      "category": "Application Development",
+      "description": "Build Lakehouse applications and reusable common notebook utilities",
+      "use_cases": [
+        "Create Streamlit/Dash apps on Databricks",
+        "Build reusable utility notebooks",
+        "Develop common data engineering libraries",
+        "Create interactive data applications",
+        "Share standardized functions across teams"
+      ],
+      "parameters": {
+        "app_type": [
+          "streamlit",
+          "dash",
+          "gradio",
+          "custom"
+        ],
+        "notebook_type": [
+          "utility",
+          "library",
+          "template",
+          "example"
+        ],
+        "sharing_scope": [
+          "workspace",
+          "team",
+          "organization"
+        ]
+      },
+      "key_features": [
+        "Lakehouse Apps framework",
+        "Common notebook patterns",
+        "Reusable utility functions",
+        "Shared libraries and modules",
+        "Interactive visualizations",
+        "User authentication and permissions"
+      ],
+      "related_features": [
+        "unity-catalog-governance",
+        "cicd-deployment"
+      ]
+    },
+    "end-to-end-observability": {
+      "name": "End-to-End Observability",
+      "category": "Operations",
+      "description": "Comprehensive observability from ingestion to consumption with full pipeline visibility",
+      "use_cases": [
+        "Complete pipeline health monitoring",
+        "End-to-end data lineage tracking",
+        "Cross-pipeline dependency monitoring",
+        "Cost and performance optimization",
+        "SLA tracking and alerting"
+      ],
+      "parameters": {
+        "observability_scope": [
+          "pipeline",
+          "workflow",
+          "end-to-end"
+        ],
+        "metrics_type": [
+          "performance",
+          "quality",
+          "cost",
+          "usage"
+        ],
+        "alerting_channels": [
+          "email",
+          "slack",
+          "pagerduty",
+          "teams"
+        ],
+        "dashboard_type": [
+          "operational",
+          "executive",
+          "technical"
+        ]
+      },
+      "key_features": [
+        "System tables integration",
+        "Custom metrics collection",
+        "Real-time dashboards",
+        "Automated alerting",
+        "Cost tracking and optimization",
+        "Data quality scorecards",
+        "Lineage visualization"
+      ],
+      "related_features": [
+        "monitoring-observability",
+        "data-quality",
+        "performance-tuning"
+      ]
+    },
+    "medallion-layer-patterns": {
+      "name": "Medallion Layer Patterns (Bronze/Silver/Gold)",
+      "category": "Architecture Pattern",
+      "description": "Comprehensive patterns for each medallion layer with real-world implementation examples",
+      "use_cases": [
+        "Designing bronze layer raw ingestion",
+        "Implementing silver layer cleansing and conforming",
+        "Creating gold layer business metrics",
+        "Managing layer-to-layer dependencies",
+        "Implementing incremental processing per layer"
+      ],
+      "parameters": {
+        "bronze_strategy": [
+          "raw_append",
+          "raw_snapshot",
+          "streaming_ingest"
+        ],
+        "silver_strategy": [
+          "cleaned",
+          "conformed",
+          "enriched",
+          "deduplicated"
+        ],
+        "gold_strategy": [
+          "aggregated",
+          "business_kpis",
+          "reporting_ready"
+        ],
+        "processing_mode": [
+          "batch",
+          "streaming",
+          "hybrid"
+        ]
+      },
+      "key_features": [
+        "Layer-specific design patterns",
+        "Data quality rules per layer",
+        "Schema evolution strategies",
+        "Performance optimization per layer",
+        "Testing strategies per layer",
+        "Monitoring and alerting per layer"
+      ],
+      "related_features": [
+        "auto-loader",
+        "change-data-capture",
+        "data-quality",
+        "streaming-processing"
+      ]
+    },
+    "file-format-readers": {
+      "name": "Advanced File Format Readers",
+      "category": "Data Ingestion",
+      "description": "Read and process various file formats including custom formats, STTM, XML, complex JSON",
+      "use_cases": [
+        "Reading custom/proprietary file formats",
+        "Processing complex nested structures",
+        "Handling multi-line JSON/XML",
+        "Parsing semi-structured data",
+        "Converting legacy formats to Delta"
+      ],
+      "parameters": {
+        "file_format": [
+          "json",
+          "xml",
+          "csv",
+          "parquet",
+          "avro",
+          "orc",
+          "custom"
+        ],
+        "parsing_strategy": [
+          "schema_defined",
+          "schema_inference",
+          "custom_parser"
+        ],
+        "error_handling": [
+          "skip",
+          "rescue",
+          "fail",
+          "log"
+        ]
+      },
+      "key_features": [
+        "Multi-format support",
+        "Custom parser integration",
+        "Schema evolution handling",
+        "Complex nested structure flattening",
+        "Data validation during read",
+        "Performance optimization for large files"
+      ],
+      "related_features": [
+        "auto-loader",
+        "error-handling-recovery",
+        "streaming-processing"
+      ]
+    }
+  },
+  "categories": [
+    "Pipeline Creation",
+    "Data Ingestion",
+    "Data Integration",
+    "Performance",
+    "Data Quality",
+    "Operations",
+    "SDLC",
+    "Processing Patterns",
+    "Architecture Pattern",
+    "Governance",
+    "Reliability",
+    "Project Planning",
+    "Deployment & IaC",
+    "Application Development"
+  ],
+  "skill_file_structure": {
+    "required_sections": [
+      "overview",
+      "when_to_use",
+      "key_concepts",
+      "parameters",
+      "code_examples",
+      "best_practices",
+      "common_patterns",
+      "troubleshooting",
+      "sdlc_considerations"
+    ],
+    "optional_sections": [
+      "advanced_usage",
+      "integration_points",
+      "performance_tips",
+      "security_considerations"
+    ]
+  }
+}
