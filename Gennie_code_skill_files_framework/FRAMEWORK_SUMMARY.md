@@ -379,4 +379,4 @@ The DE Skill File Generator Framework provides a **complete, production-ready so
 **Framework Version**: 1.0.0  
 **Created**: 2026-04-28  
 **Location**: `Databricks_AIDLC_Assesment_Framework/Gennie_code_skill_files_framework/`  
-**Maintained By**: Data Engineering Team
+**Maintained By**: Tiger Analytics Team
